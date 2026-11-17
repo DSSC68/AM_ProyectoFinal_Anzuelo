@@ -1,0 +1,184 @@
+[
+  {
+    "id": 1, "nivel": 1, "canal": "SMS", "remitente": "+52 55 8123 4401",
+    "texto": "Tu paquete esta retenido. Paga $35 de envio aqui para liberarlo: bit.ly/paq-mx2",
+    "esFraude": true, "senales": ["enlace", "urgencia", "remitente"],
+    "explicacion": "Las paqueterías no cobran envíos por SMS con ligas acortadas, y el mensaje llega de un número particular."
+  },
+  {
+    "id": 2, "nivel": 1, "canal": "WhatsApp", "remitente": "+1 (809) 555 0199",
+    "texto": "¡FELICIDADES! 🎉 Ganaste un celular de última generación. Responde con tu nombre, dirección y número de tarjeta para enviártelo 🎁",
+    "esFraude": true, "senales": ["premio", "datos", "remitente"],
+    "explicacion": "Un premio de un concurso en el que no participaste, desde un número extranjero, que además pide tu tarjeta."
+  },
+  {
+    "id": 3, "nivel": 1, "canal": "Correo", "remitente": "soporte@banco-aurora-seguridad.co",
+    "texto": "Su cuenta fue BLOQUEADA. Ingrese en menos de 2 horas o será cancelada definitivamente: aurora-desbloqueo.co/login",
+    "esFraude": true, "senales": ["remitente", "urgencia", "enlace"],
+    "explicacion": "El dominio no es el del banco (bancoaurora.mx), te presiona con un plazo de 2 horas y te manda a una página falsa."
+  },
+  {
+    "id": 4, "nivel": 1, "canal": "SMS", "remitente": "Banco Aurora",
+    "texto": "Compra aprobada por $249.00 en Farmacia del Centro con tu tarjeta terminación 4821. Si no la reconoces, llama al número al reverso de tu tarjeta.",
+    "esFraude": false, "senales": [],
+    "explicacion": "Solo te informa. No trae enlaces ni pide datos, y te manda al teléfono oficial que viene en tu propia tarjeta."
+  },
+  {
+    "id": 5, "nivel": 1, "canal": "WhatsApp", "remitente": "Mamá ❤️",
+    "texto": "¿Vas a llegar a comer? Hice arroz 🍚",
+    "esFraude": false, "senales": [],
+    "explicacion": "Es un contacto que ya tienes guardado y el mensaje no pide nada fuera de lo normal."
+  },
+  {
+    "id": 6, "nivel": 1, "canal": "SMS", "remitente": "+52 33 9087 1122",
+    "texto": "Oficina de Hacienda: tiene un adeudo pendiente. Pague HOY para evitar el embargo de sus bienes: hacienda-pagos.info",
+    "esFraude": true, "senales": ["remitente", "urgencia", "enlace"],
+    "explicacion": "Las dependencias de gobierno no cobran por SMS desde un número cualquiera ni usan dominios .info."
+  },
+  {
+    "id": 7, "nivel": 1, "canal": "Correo", "remitente": "noreply@mercadito.com.mx",
+    "texto": "Tu pedido #48213 ya fue enviado. Puedes ver el seguimiento entrando a tu cuenta en la app de Mercadito.",
+    "esFraude": false, "senales": [],
+    "explicacion": "Viene del dominio oficial de la tienda, no tiene enlaces raros y te dice que revises desde su app."
+  },
+  {
+    "id": 8, "nivel": 1, "canal": "SMS", "remitente": "+52 55 0000 1111",
+    "texto": "Gana $5,000 DIARIOS desde casa sin experiencia!! Escribe YA a wa.me/5215500001111",
+    "esFraude": true, "senales": ["premio", "urgencia", "enlace"],
+    "explicacion": "Dinero fácil sin experiencia es una oferta típica de fraude, y te presiona a escribir \"YA\"."
+  },
+  {
+    "id": 9, "nivel": 1, "canal": "SMS", "remitente": "Aurora",
+    "texto": "Tu código de verificación es 482913. No lo compartas con nadie, ni con personal del banco.",
+    "esFraude": false, "senales": [],
+    "explicacion": "Es el código que pediste para entrar a tu app. El propio mensaje te recuerda no compartirlo."
+  },
+  {
+    "id": 10, "nivel": 1, "canal": "WhatsApp", "remitente": "+52 55 6611 2290",
+    "texto": "Hola, me equivoqué y te mandé un código por SMS, ¿me lo pasas porfa? Es urgente 🙏",
+    "esFraude": true, "senales": ["datos", "urgencia", "remitente"],
+    "explicacion": "Es el robo de WhatsApp más común: ese código sirve para quedarse con tu cuenta. Nunca lo compartas."
+  },
+
+  {
+    "id": 11, "nivel": 2, "canal": "Correo", "remitente": "avisos@bancoaurora.mx.verificacion-cliente.com",
+    "texto": "Estimado cliente: detectamos un acceso inusual. Confirme su identidad en el siguiente enlace para mantener activa su banca en línea.",
+    "esFraude": true, "senales": ["remitente", "enlace", "datos"],
+    "explicacion": "El dominio real es lo que va al final: verificacion-cliente.com. El \"bancoaurora.mx\" del inicio es un disfraz."
+  },
+  {
+    "id": 12, "nivel": 2, "canal": "SMS", "remitente": "EnviaYa",
+    "texto": "Tu paquete llega hoy entre 14:00 y 18:00. Consulta el estado en la app de EnviaYa o en enviaya.mx",
+    "esFraude": false, "senales": [],
+    "explicacion": "Usa el dominio oficial, no te cobra nada y no pide datos. Solo te avisa la hora de entrega."
+  },
+  {
+    "id": 13, "nivel": 2, "canal": "WhatsApp", "remitente": "+52 81 4421 7780",
+    "texto": "Hola ma, cambié de número porque se me cayó el cel 😥 ¿Me puedes depositar $2,500? Luego te explico",
+    "esFraude": true, "senales": ["remitente", "datos", "urgencia"],
+    "explicacion": "El \"cambié de número\" es un clásico. Antes de depositar, llama al número de siempre de tu familiar."
+  },
+  {
+    "id": 14, "nivel": 2, "canal": "Correo", "remitente": "servicios.escolares@uni.edu.mx",
+    "texto": "Recordatorio: la reinscripción cierra el viernes. Realízala desde el portal de alumnos con tu usuario de siempre.",
+    "esFraude": false, "senales": [],
+    "explicacion": "Viene del dominio de la escuela, no trae enlaces y te manda al portal que ya conoces."
+  },
+  {
+    "id": 15, "nivel": 2, "canal": "SMS", "remitente": "+52 55 3401 2288",
+    "texto": "Movi+: tienes 5,000 puntos que vencen HOY. Canjéalos por saldo aquí: movi-puntos.top",
+    "esFraude": true, "senales": ["urgencia", "premio", "enlace", "remitente"],
+    "explicacion": "Puntos que \"vencen hoy\", desde un número particular y con un dominio .top que no es de la compañía."
+  },
+  {
+    "id": 16, "nivel": 2, "canal": "Correo", "remitente": "cobros@streamflix-pagos.net",
+    "texto": "No pudimos procesar tu pago. Actualiza tu tarjeta en las próximas 24 h para no perder tu cuenta: streamflix-pagos.net/actualizar",
+    "esFraude": true, "senales": ["remitente", "urgencia", "enlace", "datos"],
+    "explicacion": "Un dominio parecido pero no oficial, un plazo para presionarte y una página para robar tu tarjeta."
+  },
+  {
+    "id": 17, "nivel": 2, "canal": "SMS", "remitente": "Movi+",
+    "texto": "Tu recarga de $100 fue exitosa. Vigencia: 30 días. Consulta tu saldo marcando *133#.",
+    "esFraude": false, "senales": [],
+    "explicacion": "Es la confirmación de algo que tú hiciste. No hay enlaces ni te pide nada."
+  },
+  {
+    "id": 18, "nivel": 2, "canal": "WhatsApp", "remitente": "Paco (Equipo AM)",
+    "texto": "Ya subí los cambios al repo, ¿los revisas antes de la entrega?",
+    "esFraude": false, "senales": [],
+    "explicacion": "Un contacto conocido hablando de algo que esperas. No hay enlaces, premios ni prisa extraña."
+  },
+  {
+    "id": 19, "nivel": 2, "canal": "Correo", "remitente": "becas@fundacion-futuro.org",
+    "texto": "¡Fuiste seleccionado para una beca del 100%! Solo cubre la cuota de inscripción de $899 en las próximas 48 horas.",
+    "esFraude": true, "senales": ["premio", "urgencia", "datos"],
+    "explicacion": "Una beca que no solicitaste y que te pide pagar para recibirla. Las becas reales no cobran por dártelas."
+  },
+  {
+    "id": 20, "nivel": 2, "canal": "SMS", "remitente": "Banco Aurora",
+    "texto": "Por tu seguridad, recuerda: nunca te pediremos claves, NIP ni códigos por llamada, SMS o WhatsApp.",
+    "esFraude": false, "senales": [],
+    "explicacion": "Es un aviso preventivo del banco: no pide nada ni trae enlaces."
+  },
+
+  {
+    "id": 21, "nivel": 3, "canal": "SMS", "remitente": "Banco Aurora",
+    "texto": "Banco Aurora: se registró un nuevo dispositivo en tu cuenta. Si no fuiste tú, cancélalo en aurora-mx.com/cancelar",
+    "esFraude": true, "senales": ["enlace", "urgencia"],
+    "explicacion": "El nombre del remitente se puede falsificar. El sitio oficial es bancoaurora.mx, no aurora-mx.com."
+  },
+  {
+    "id": 22, "nivel": 3, "canal": "Correo", "remitente": "notificaciones@bancoaurora.mx",
+    "texto": "Tu estado de cuenta de octubre ya está disponible. Consúltalo iniciando sesión en la app oficial.",
+    "esFraude": false, "senales": [],
+    "explicacion": "Dominio oficial, sin enlaces ni archivos raros, y te manda a la app que ya usas."
+  },
+  {
+    "id": 23, "nivel": 3, "canal": "Correo", "remitente": "seguridad@rnercadito.com.mx",
+    "texto": "Detectamos una compra de $8,450 en tu cuenta. Si no la reconoces, cancélala aquí: rnercadito.com.mx/cancelar",
+    "esFraude": true, "senales": ["remitente", "enlace", "urgencia"],
+    "explicacion": "Mira de cerca: dice \"rnercadito\" (r + n), no \"mercadito\". Es un dominio que imita al real."
+  },
+  {
+    "id": 24, "nivel": 3, "canal": "WhatsApp", "remitente": "EnviaYa ✅ (+52 55 7712 9031)",
+    "texto": "Hola, soy de EnviaYa. Para reprogramar tu entrega confirma el código de 6 dígitos que te acaba de llegar por SMS.",
+    "esFraude": true, "senales": ["datos", "remitente"],
+    "explicacion": "Ninguna paquetería necesita un código tuyo. Ese código suele ser para robar tu WhatsApp o tu banca."
+  },
+  {
+    "id": 25, "nivel": 3, "canal": "SMS", "remitente": "EnviaYa",
+    "texto": "No pudimos entregar tu paquete. Lo intentaremos de nuevo mañana. No es necesario que hagas nada.",
+    "esFraude": false, "senales": [],
+    "explicacion": "No te cobra, no pide datos ni tiene enlaces. Dice claramente que no tienes que hacer nada."
+  },
+  {
+    "id": 26, "nivel": 3, "canal": "Correo", "remitente": "soporte.ti@uni.edu.mx",
+    "texto": "Tu buzón está lleno. Para no perder correos, valida tu contraseña en uni-edu-mx.webmail-login.com",
+    "esFraude": true, "senales": ["enlace", "datos"],
+    "explicacion": "Aunque el remitente parezca de la escuela, el enlace va a webmail-login.com y te pide tu contraseña."
+  },
+  {
+    "id": 27, "nivel": 3, "canal": "SMS", "remitente": "Aurora",
+    "texto": "Transferencia SPEI recibida por $1,200.00 de JUAN PEREZ. Consulta el detalle en tu app.",
+    "esFraude": false, "senales": [],
+    "explicacion": "Solo te informa de un depósito y te manda a tu app. No hay enlace ni petición de datos."
+  },
+  {
+    "id": 28, "nivel": 3, "canal": "Correo", "remitente": "facturas@mercadito.com.mx",
+    "texto": "Te enviamos la factura de tu compra #48213. También puedes descargarla desde \"Mis pedidos\" en la app.",
+    "esFraude": false, "senales": [],
+    "explicacion": "Dominio oficial y relacionado con una compra que sí hiciste. Te ofrece revisarlo desde la app."
+  },
+  {
+    "id": 29, "nivel": 3, "canal": "WhatsApp", "remitente": "Tío Beto",
+    "texto": "Mira, el gobierno está regalando un apoyo de $3,000, solo regístrate aquí 👇 apoyo-bienestar-mx.site",
+    "esFraude": true, "senales": ["enlace", "premio"],
+    "explicacion": "Aunque venga de un familiar, seguramente lo reenvió sin saber. Un dominio .site no es un sitio de gobierno."
+  },
+  {
+    "id": 30, "nivel": 3, "canal": "SMS", "remitente": "+52 55 2045 7731",
+    "texto": "Hola, soy Laura de Recursos Humanos de Grupo Delta. Revisamos tu CV y queremos ofrecerte una entrevista. ¿Te puedo marcar mañana a las 11?",
+    "esFraude": false, "senales": [],
+    "explicacion": "No trae enlaces, no pide dinero ni datos y no te presiona. Aun así, puedes verificar a la empresa antes de la llamada."
+  }
+]
