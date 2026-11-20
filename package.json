@@ -1,11 +1,12 @@
 {
   "name": "anzuelo",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "expo-router/entry",
   "dependencies": {
     "@expo/metro-runtime": "~58.0.17",
     "expo": "~58.0.25",
     "expo-constants": "~58.0.16",
+    "expo-haptics": "~58.0.8",
     "expo-linking": "~58.0.17",
     "expo-router": "~58.0.31",
     "expo-status-bar": "~58.0.5",

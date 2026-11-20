@@ -38,6 +38,7 @@ export default function Creditos() {
           <Text style={styles.cardTitle}>Tecnologías</Text>
           <Text style={styles.body}>• React Native + Expo (SDK 58) con TypeScript</Text>
           <Text style={styles.body}>• Expo Router para la navegación</Text>
+          <Text style={styles.body}>• PanResponder y Animated para deslizar</Text>
           <Text style={styles.muted}>
             Los mensajes, marcas y números del juego son inventados con fines educativos.
           </Text>

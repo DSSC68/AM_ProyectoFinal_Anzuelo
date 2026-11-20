@@ -1,30 +1,45 @@
+import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
-import { useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useRef, useState } from "react";
+import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Boton } from "../components/Boton";
+import { PanelExplicacion } from "../components/PanelExplicacion";
+import {
+  PistaDeslizar,
+  TarjetaDeslizable,
+  type Decision,
+  type TarjetaDeslizableRef,
+} from "../components/TarjetaDeslizable";
 import { TarjetaMensaje } from "../components/TarjetaMensaje";
 import { armarPartida, NOMBRE_NIVEL } from "../game/logica";
 import { guardarUltimaPartida } from "../game/partidaActual";
 import { styles } from "../styles";
 import { colors, font, radius, spacing } from "../theme";
 
-type Decision = "fraude" | "seguro";
+function vibrar(acerto: boolean) {
+  if (Platform.OS === "web") return;
+  Haptics.notificationAsync(
+    acerto ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Error
+  ).catch(() => {});
+}
 
 export default function Juego() {
   const [partida] = useState(armarPartida);
   const [indice, setIndice] = useState(0);
   const [aciertos, setAciertos] = useState(0);
   const [acerto, setAcerto] = useState<boolean | null>(null); // null = aún no responde
+  const tarjeta = useRef<TarjetaDeslizableRef>(null);
 
   const mensaje = partida[indice];
   const esUltimo = indice === partida.length - 1;
 
-  // V1: se clasifica con botones. (En V2 se cambia por el gesto de deslizar.)
+  // V2: la tarjeta se desliza (o se usan los botones, que también la avientan).
   const decidir = (decision: Decision) => {
     const correcto = (decision === "fraude") === mensaje.esFraude;
     if (correcto) setAciertos((a) => a + 1);
     setAcerto(correcto);
+    vibrar(correcto);
   };
 
   const siguiente = () => {
@@ -60,23 +75,25 @@ export default function Juego() {
       </View>
 
       <ScrollView contentContainerStyle={styles.scroll}>
-        <TarjetaMensaje mensaje={mensaje} />
-
         {acerto === null ? (
-          <View style={s.botones}>
-            <Boton texto="← Fraude" variante="fraude" style={{ flex: 1 }} onPress={() => decidir("fraude")} />
-            <Boton texto="Seguro →" variante="seguro" style={{ flex: 1 }} onPress={() => decidir("seguro")} />
-          </View>
+          <>
+            <TarjetaDeslizable key={mensaje.id} ref={tarjeta} mensaje={mensaje} onDecidir={decidir} />
+            <PistaDeslizar />
+            <View style={s.botones}>
+              <Boton texto="← Fraude" variante="fraude" style={{ flex: 1 }} onPress={() => tarjeta.current?.deslizar("fraude")} />
+              <Boton texto="Seguro →" variante="seguro" style={{ flex: 1 }} onPress={() => tarjeta.current?.deslizar("seguro")} />
+            </View>
+          </>
         ) : (
-          <View style={[s.aviso, { borderColor: acerto ? colors.good : colors.bad }]}>
-            <Text style={[s.veredicto, { color: acerto ? colors.good : colors.bad }]}>
-              {acerto ? "✅ ¡Correcto!" : "❌ Incorrecto"}
-            </Text>
-            <Text style={styles.body}>
-              Este mensaje era <Text style={{ fontWeight: "800" }}>{mensaje.esFraude ? "FRAUDE" : "SEGURO"}</Text>.
-            </Text>
-            <Boton texto={esUltimo ? "Ver resultados" : "Siguiente"} onPress={siguiente} />
-          </View>
+          <>
+            <TarjetaMensaje mensaje={mensaje} />
+            <PanelExplicacion
+              mensaje={mensaje}
+              acerto={acerto}
+              onSiguiente={siguiente}
+              textoBoton={esUltimo ? "Ver resultados" : "Siguiente"}
+            />
+          </>
         )}
       </ScrollView>
     </SafeAreaView>
@@ -91,6 +108,4 @@ const s = StyleSheet.create({
   barra: { height: 8, backgroundColor: colors.border, borderRadius: radius.pill, overflow: "hidden" },
   barraRelleno: { height: "100%", backgroundColor: colors.orange },
   botones: { flexDirection: "row", gap: spacing.md },
-  aviso: { backgroundColor: colors.card, borderWidth: 2, borderRadius: radius.lg, padding: spacing.lg, gap: spacing.md },
-  veredicto: { fontSize: font.large + 2, fontWeight: "900" },
 });
