@@ -6,7 +6,7 @@ Anzuelo es un juego para el celular que enseña a reconocer *phishing*. Te muest
 
 Proyecto final de **Aplicaciones Móviles** · Universidad La Salle México · Prof. Felipe Mandujano Gómez.
 
-> **Versión actual: V2 · Deslizar y aprender (semana 2)**
+> **Versión actual: V3 · Puntaje, niveles y compartir (semana 3)**
 
 ## Equipo Pythonistas
 
@@ -16,11 +16,12 @@ Proyecto final de **Aplicaciones Móviles** · Universidad La Salle México · P
 
 ## Qué hay en esta versión
 
-- **Tarjeta deslizable** con PanResponder + Animated: izquierda = fraude, derecha = seguro.
-- Sellos de *FRAUDE* / *SEGURO* que aparecen mientras arrastras.
-- Los botones siguen funcionando y también avientan la tarjeta.
-- **Pantalla de explicación** después de cada respuesta, con las señales que delataban el mensaje.
-- Vibración al acertar o fallar (`expo-haptics`).
+- **Puntaje**: 10 puntos × nivel por acierto, y se duplican con una racha de 3 o más.
+- Aviso al **subir de nivel** (obvios → intermedios → casi perfectos).
+- **Resultados completos**: puntaje, precisión, mejor racha, aciertos por nivel y las señales que más se te escaparon.
+- **Mejor puntaje** guardado en el teléfono con AsyncStorage.
+- **Compartir resultado**: toma una imagen de la tarjeta de puntuación (`react-native-view-shot`) y la comparte con el menú nativo del sistema (`expo-sharing`).
+- **Guía de señales** con las 5 señales de alerta.
 
 ## Cómo correrlo
 
@@ -39,13 +40,14 @@ Escanea el código QR con Expo Go (Android) o con la cámara (iPhone). Para revi
 src/
 ├── app/                  # Pantallas (Expo Router)
 │   ├── _layout.tsx       # Navegación (Stack)
-│   ├── index.tsx         # Inicio
-│   ├── juego.tsx         # Partida con tarjeta deslizable
-│   ├── resultados.tsx    # Fin de la partida
+│   ├── index.tsx         # Inicio + mejor puntaje
+│   ├── juego.tsx         # Partida: deslizar, puntaje, racha y niveles
+│   ├── resultados.tsx    # Resultados + compartir imagen
+│   ├── guia.tsx          # Guía de las 5 señales
 │   └── creditos.tsx      # Equipo y tecnologías
 ├── components/           # Boton, TarjetaMensaje, TarjetaDeslizable, PanelExplicacion
 ├── data/                 # mensajes.json (30 mensajes) y senales.ts
-├── game/                 # tipos, lógica de la partida
+├── game/                 # tipos, lógica, puntaje y AsyncStorage
 ├── styles.ts             # Estilos compartidos
 └── theme.ts              # Colores y medidas
 ```
@@ -56,9 +58,10 @@ src/
 |---|---|
 | **V1** | Base del juego (semana 1) |
 | **V2** | Deslizar y aprender (semana 2) |
+| **V3** | Puntaje, niveles y compartir (semana 3) |
 
 ## Tecnologías
 
-React Native + Expo (SDK 58) · TypeScript · Expo Router · PanResponder y Animated · expo-haptics
+React Native + Expo (SDK 58) · TypeScript · Expo Router · PanResponder y Animated · expo-haptics · AsyncStorage · react-native-view-shot · expo-sharing
 
 Los mensajes, marcas, números y dominios del juego son **inventados** con fines educativos.

@@ -1,11 +1,11 @@
+import type { Resultado } from "./logica";
+
 // Guarda en memoria el resultado de la última partida para que
-// la pantalla de resultados lo lea.
-export type ResultadoSimple = { aciertos: number; total: number };
+// la pantalla de resultados lo lea (no necesita internet ni servidor).
+let ultimo: { resultado: Resultado; esRecord: boolean } | null = null;
 
-let ultimo: ResultadoSimple | null = null;
-
-export function guardarUltimaPartida(resultado: ResultadoSimple) {
-  ultimo = resultado;
+export function guardarUltimaPartida(resultado: Resultado, esRecord: boolean) {
+  ultimo = { resultado, esRecord };
 }
 
 export function leerUltimaPartida() {
